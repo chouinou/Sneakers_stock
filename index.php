@@ -27,9 +27,8 @@ $router->map('GET', '/produit/[i:id]', 'product');
 
 $match = $router->match();
 print_r($match);
-if ($match !== false && is_callable($match['target'])) { // $match['target] == 'accueil
+if ($match !== false && is_callable($match['target'])) {
     call_user_func_array($match['target'], $match["params"]);
-    // accueil();
 } else {
     http_response_code(404);
     erreur();
@@ -59,9 +58,8 @@ function register() {
 }
  
 function product($id) {
-    // echo $id;
     $produits = require_once(__DIR__."/data/produits.php");
-    $produit_index = $produits[$id];
+    $produit = $produits[$id];
     require_once(__DIR__ . "/views/produit.php");
 }
 

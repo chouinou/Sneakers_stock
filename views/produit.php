@@ -99,8 +99,8 @@
         <section class="product-layout">
             <div class="gallery">
                 <div class="gallery-main">
-                    <img id="main-image" src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&amp;fit=crop&amp;w=1100&amp;q=85" alt="Air Max 90 rouge et blanche">
-                    <span class="product-label">Best-seller</span>
+                    <img id="main-image" src= <?= $produit["image"] ?> alt= <?= $produit["description"] ?> >
+                    <span class="product-label"> <?= $produit["label"] ?> </span>
                 </div>
                 <div class="thumbs" aria-label="Galerie du produit">
                     <button class="thumb" type="button" aria-label="Voir la photo rouge" aria-pressed="true" data-src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&amp;fit=crop&amp;w=1100&amp;q=85" data-alt="Air Max 90 rouge et blanche"><img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&amp;fit=crop&amp;w=250&amp;q=75" alt=""></button>
@@ -110,23 +110,18 @@
                 </div>
             </div>
             <div class="product-details">
-                <p class="eyebrow">Le classique revisité</p>
-                <h1>Air Max 90</h1>
-                <p class="subtitle">Red / White</p>
-                <div class="price-line"><span class="price">149 €</span><span class="stock">En stock</span></div>
-                <p class="description">Un classique qui ne passe pas inaperçu. La Air Max 90 associe une silhouette emblématique à un confort pensé pour le quotidien.</p>
+                <p class="eyebrow">Dummy text not in data</p>
+                <h1> <?= $produit["name"] ?></h1>
+                <p class="subtitle"><?= $produit["coloris"] ?></p>
+                <div class="price-line"><span class="price"><?= $produit["prix"]?> €</span><span class="stock">En stock</span></div>
+                <p class="description"><?= $produit["description"] ?></p>
                 <form action="#" method="post">
                     <div class="size-heading"><label>Choisis ta taille</label><a href="#">Guide des tailles</a></div>
                     <div class="size-grid" role="group" aria-label="Taille">
-                        <label class="size-option"><input type="radio" name="size" value="39" required><span>39</span></label>
-                        <label class="size-option"><input type="radio" name="size" value="40"><span>40</span></label>
-                        <label class="size-option"><input type="radio" name="size" value="41"><span>41</span></label>
-                        <label class="size-option"><input type="radio" name="size" value="42"><span>42</span></label>
-                        <label class="size-option"><input type="radio" name="size" value="43"><span>43</span></label>
-                        <label class="size-option"><input type="radio" name="size" value="44"><span>44</span></label>
-                        <label class="size-option"><input type="radio" name="size" value="45"><span>45</span></label>
-                        <label class="size-option"><input type="radio" name="size" value="46" disabled><span>46</span></label>
-                    </div>
+                    <?php foreach($produit['tailles'] as $taille): ?>
+                        <label class="size-option"><input type="radio" name="size" value="<?= $taille ?>" required><span><?=$taille?></span></label>
+                    <?php endforeach; ?>
+                    </div>     
                     <div class="buy-row">
                         <label class="visually-hidden" for="quantity">Quantité</label>
                         <select class="quantity" id="quantity" name="quantity" aria-label="Quantité">
