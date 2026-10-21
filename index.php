@@ -23,12 +23,12 @@ $router->map('GET', '/about', 'about');
 $router->map('GET', '/catalogue', 'catalogue');
 $router->map('GET', '/connexion', 'login');
 $router->map('GET', '/inscription', 'register');
-$router->map('GET', '/produit', 'product');
+$router->map('GET', '/produit/[i:id]', 'product');
 
 $match = $router->match();
-// print_r($match);
+print_r($match);
 if ($match !== false && is_callable($match['target'])) { // $match['target] == 'accueil
-    call_user_func($match['target']);
+    call_user_func_array($match['target'], $match["params"]);
     // accueil();
 } else {
     http_response_code(404);
@@ -57,20 +57,15 @@ function login() {
 function register() {
     require_once(__DIR__ . "/views/inscription.php");
 }
-
-function product() {
+ 
+function product($id) {
+    // echo $id;
+    $produits = require_once(__DIR__."/data/produits.php");
+    $produit_index = $produits[$id];
     require_once(__DIR__ . "/views/produit.php");
 }
 
 function erreur() {
     require_once(__DIR__ . "/views/404.php");
 }
-
-
-
-// echo "<pre>";
-// var_dump($match);
-// echo "<pre>";
 ?>
-
-<!-- <h1>Bon, maintenant j'en ai finit avec le php, je suis de retour en HTML</h1> -->

@@ -99,7 +99,7 @@
         <p class="result-count" aria-live="polite"><span id="result-number">8</span> paires à découvrir</p>
         <section class="product-grid" aria-label="Sneakers disponibles">
             <?php foreach($produits as $produit) :?>
-            <a class="product-card" data-category="<?= $produit["categorie"] ?>" data-price="<?= $produit["prix"] ?>" href="/produit">
+            <a class="product-card" data-category="<?= $produit["categorie"] ?>" data-price="<?= $produit["prix"] ?>" href="/produit/<?= $produit["id"]?>">
                 <div class="product-image"><img src="<?= $produit["image"] ?>" alt="<?= $produit["nom"] ?>" loading="lazy"><span class="product-label"><?= $produit["label"] ?></span></div>
                 <div class="product-info"><div><h2><?= $produit["nom"] ?></h2><p><?= $produit["coloris"] ?></p></div><span class="price"><?= $produit["prix"] ?> €</span></div>
             </a>
