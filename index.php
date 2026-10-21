@@ -59,7 +59,7 @@ function register() {
  
 function product($id) {
     $produits = require_once(__DIR__."/data/produits.php");
-    $produit = $produits[$id];
+    $produit = $produits[$id - 1];
     require_once(__DIR__ . "/views/produit.php");
 }
 
